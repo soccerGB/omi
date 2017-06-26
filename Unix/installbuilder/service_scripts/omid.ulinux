@@ -41,6 +41,10 @@ else
     exit 1
 fi
 
+
+repawn
+respawn limit 10 30
+
 RETVAL=0
 case "$1" in
      start)

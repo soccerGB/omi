@@ -76,12 +76,12 @@ start_omi()
     if pidof systemd 1> /dev/null 2> /dev/null; then
         /bin/systemctl start omid
     else
-        if [ -x /usr/sbin/invoke-rc.d ]; then
-            /usr/sbin/invoke-rc.d omid start
-        elif [ -x /sbin/service ]; then
+        if [ -x /sbin/service ]; then
             /sbin/service omid start
         elif [ -x /bin/systemctl ]; then
             /bin/systemctl start omid
+        elif [ -x /usr/sbin/invoke-rc.d ]; then
+            /usr/sbin/invoke-rc.d omid start
         else
             echo "Unrecognized service controller to start omid service" 1>&2
             exit 1
